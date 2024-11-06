@@ -22,3 +22,10 @@ Route::get('/checkout', function(){
     return view('checkout');
 })->name('checkout');
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
