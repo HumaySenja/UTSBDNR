@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Sangkuriang Mart</title>
+        <title>{{ $title }}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -37,10 +37,10 @@
         </div>
         <!-- Spinner End -->
 
-
         @include('partials.nav')
 
         <main>
+            @include('partials.header')
             @yield('content')
         </main>
 

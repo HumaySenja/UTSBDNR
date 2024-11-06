@@ -36,26 +36,6 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    // READ all users
-    public function getAllUser()
-    {
-        $users = User::all();
-
-        return response()->json($users);
-    }
-
-    // READ a single user by ID
-    public function getUserById($id)
-    {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
-
-        return response()->json($user);
-    }
-
     // UPDATE a user by ID
     public function updateUser(Request $request, $id)
     {
@@ -99,7 +79,7 @@ class UserController extends Controller
 
     
     public function loginView(){
-        return view('auth.login');
+        return view('auth.login', ['title' => "Login"]);
     }
 
     // LOGIN a user
@@ -118,7 +98,7 @@ class UserController extends Controller
     }
 
     public function registerView(){
-        return view('auth.register');
+        return view('auth.register', ['title' => "Register"]);
     }
 
     public function logout(){

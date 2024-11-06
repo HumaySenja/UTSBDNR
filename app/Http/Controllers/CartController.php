@@ -34,12 +34,12 @@ class CartController extends Controller
     }
 
     // Melihat isi keranjang
-    public function viewCart()
+    public function cartView()
     {
         $user = Auth::user(); // Ambil user yang sedang login
         $cart = Cart::where('user_id', $user->id)->get(); // Ambil semua produk di keranjang user
 
-        return view('cart.index', compact('cart'));
+        return view('cart', ['title' => "Cart", compact('cart')]);
     }
 
     // Menghapus produk dari keranjang

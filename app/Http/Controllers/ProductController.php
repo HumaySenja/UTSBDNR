@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all(); // Mengambil semua produk dari MongoDB
-        return view('home', compact('products'));
+        return view('home', ['title' => "Sangkuriang Mart", "products" => $products]);
     }
 
      // Menampilkan satu produk berdasarkan ID
