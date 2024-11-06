@@ -25,6 +25,9 @@ Route::get('/checkout', function(){
 
 Route::get('/register', [UserController::class, 'registerView']);
 Route::post('/register/process', [UserController::class, 'addUser']);
-Route::get('/login', [UserController::class, 'loginView']);
+Route::get('/login', [UserController::class, 'loginView'])->name('login');
 Route::post('/login/process', [UserController::class, 'login']);
-Route::get('/logout', [UserController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [UserController::class, 'logout']);
+});
