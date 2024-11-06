@@ -106,7 +106,7 @@
 
                                 <!-- Login Link -->
                                 <div class="col-12 text-center">
-                                    <p class="small mb-0">Already have an account? <a href="">Log in</a></p>
+                                    <p class="small mb-0">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
                                 </div>
                             </form>
                         </div>
