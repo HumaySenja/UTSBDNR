@@ -144,11 +144,20 @@
                                                     <p>{{ $product->description }}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">
-                                                            Rp{{ number_format($product->price, 0, ',', '.') }} /kg</p>
-                                                        <a href="#"
-                                                            class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                            cart</a>
+                                                            Rp{{ number_format($product->price, 0, ',', '.') }} / kg
+                                                        </p>
+
+                                                        <!-- Form untuk Add to Cart -->
+                                                        <form
+                                                            action="{{ route('cart.add', ['productId' => $product->_id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                Add to cart
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,11 +187,20 @@
                                                         <p>{{ $product->description }}</p>
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">
-                                                                Rp{{ number_format($product->price, 0, ',', '.') }} /kg</p>
-                                                            <a href="#"
-                                                                class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add
-                                                                to cart</a>
+                                                                Rp{{ number_format($product->price, 0, ',', '.') }} / kg
+                                                            </p>
+
+                                                            <!-- Form untuk Add to Cart -->
+                                                            <form
+                                                                action="{{ route('cart.add', ['productId' => $product->_id]) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                    Add to cart
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -214,11 +232,20 @@
                                                         <p>{{ $product->description }}</p>
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">
-                                                                Rp{{ number_format($product->price, 0, ',', '.') }} /kg</p>
-                                                            <a href="#"
-                                                                class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add
-                                                                to cart</a>
+                                                                Rp{{ number_format($product->price, 0, ',', '.') }} / kg
+                                                            </p>
+
+                                                            <!-- Form untuk Add to Cart -->
+                                                            <form
+                                                                action="{{ route('cart.add', ['productId' => $product->_id]) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                    Add to cart
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -306,10 +333,18 @@
                                 <p>{{ $product->description }}</p>
                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                     <p class="text-dark fs-5 fw-bold mb-0">
-                                        Rp{{ number_format($product->price, 0, ',', '.') }} / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                                    </a>
+                                        Rp{{ number_format($product->price, 0, ',', '.') }} / kg
+                                    </p>
+
+                                    <!-- Form untuk Add to Cart -->
+                                    <form action="{{ route('cart.add', ['productId' => $product->_id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="btn border border-secondary rounded-pill px-3 text-primary">
+                                            <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

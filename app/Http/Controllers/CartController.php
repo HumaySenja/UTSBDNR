@@ -29,17 +29,24 @@ class CartController extends Controller
                 'quantity' => 1,
             ]);
         }
-
-        // return redirect()->route('cart')->with('success', 'Produk berhasil ditambahkan ke keranjang!');
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     // Melihat isi keranjang
     public function cartView()
     {
         $user = Auth::user(); // Ambil user yang sedang login
-        $cart = Cart::where('user_id', $user->id)->get(); // Ambil semua produk di keranjang user
+        $cartItems = Cart::where('user_id', $user->id)
+            ->with('product') // Relasi dengan produk
+            ->get();
 
-        return view('cart', ['title' => "Cart", compact('cart')]);
+        // Hitung total harga dan subtotal
+        $total = $cartItems->sum(function ($cartItem) {
+            return $cartItem->product->price * $cartItem->quantity;
+        });
+
+        $title = "Cart";
+        return view('cart', compact('cartItems', 'total', 'title'));
     }
 
     // Menghapus produk dari keranjang
@@ -48,15 +55,7 @@ class CartController extends Controller
         $cartItem = Cart::findOrFail($cartId);
         $cartItem->delete(); // Menghapus produk dari keranjang
 
-        return redirect()->route('cart.view')->with('success', 'Produk berhasil dihapus dari keranjang.');
+        return redirect()->route('cart')->with('success', 'Produk berhasil dihapus dari keranjang.');
     }
 
-    // Mengupdate kuantitas produk di keranjang
-    public function updateQuantity(Request $request, $cartId)
-    {
-        $cartItem = Cart::findOrFail($cartId);
-        $cartItem->update(['quantity' => $request->quantity]);
-
-        return redirect()->route('cart.view')->with('success', 'Kuantitas produk diperbarui.');
-    }
 }

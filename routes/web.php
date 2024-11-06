@@ -23,6 +23,17 @@ Route::get('/login', [UserController::class, 'loginView'])->name('login');
 Route::post('/login/process', [UserController::class, 'login']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/history', [TransactionController::class, 'index']);
 });
+
+Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+Route::delete('/cart/{cartId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
+
+
+
+
