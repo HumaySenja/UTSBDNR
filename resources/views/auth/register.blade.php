@@ -12,30 +12,77 @@
                                 <p class="small">Enter your personal details to create account</p>
                             </div>
 
-                            <form method="POST" action="" class="row g-3">
+                            <form method="POST" action="/register/process" class="row g-3">
                                 @csrf
 
                                 <!-- Nama Field -->
                                 <div class="col-12">
                                     <label for="yourNama" class="form-label">Nama</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" name="Nama" id="yourNama" class="form-control @error('Nama') is-invalid @enderror" value="{{ old('Nama') }}" required>
-                                        @error('Nama')
+                                        <input type="text" name="name" id="yourNama" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required>
+                                        @error('name')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
                                 </div>
 
-                                <!-- Username Field -->
+
+                                <!-- Email Field -->
                                 <div class="col-12">
-                                    <label for="yourUsername" class="form-label">Username</label>
+                                    <label for="email" class="form-label">Email</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" name="username" id="yourUsername" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" required>
-                                        @error('username')
+                                        <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                                        @error('email')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
                                     </div>
                                 </div>
+
+                                <!-- Address Type Field -->
+                                <div class="col-12">
+                                    <label for="address_type" class="form-label">Address Type</label>
+                                    <input type="text" name="address[0][type]" id="address_type" class="form-control @error('address.0.type') is-invalid @enderror" value="{{ old('address.0.type') }}" required>
+                                    @error('address.0.type')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+
+                                <!-- Address Line Field -->
+                                <div class="col-12">
+                                    <label for="address_line" class="form-label">Address Line</label>
+                                    <input type="text" name="address[0][address_line]" id="address_line" class="form-control @error('address.0.address_line') is-invalid @enderror" value="{{ old('address.0.address_line') }}" required>
+                                    @error('address.0.address_line')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+
+                                <!-- City Field -->
+                                <div class="col-12">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" name="address[0][city]" id="city" class="form-control @error('address.0.city') is-invalid @enderror" value="{{ old('address.0.city') }}" required>
+                                    @error('address.0.city')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+
+                                <!-- Postal Code Field -->
+                                <div class="col-12">
+                                    <label for="postal_code" class="form-label">Postal Code</label>
+                                    <input type="text" name="address[0][postal_code]" id="postal_code" class="form-control @error('address.0.postal_code') is-invalid @enderror" value="{{ old('address.0.postal_code') }}" required>
+                                    @error('address.0.postal_code')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required>
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+
+
 
                                 <!-- Password Field -->
                                 <div class="col-12">
@@ -47,10 +94,10 @@
                                 </div>
 
                                 <!-- Password Confirmation Field -->
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <label for="yourPasswordConfirm" class="form-label">Konfirmasi Password</label>
                                     <input type="password" name="password_confirmation" id="yourPasswordConfirm" class="form-control" required>
-                                </div>
+                                </div> -->
 
                                 <!-- Register Button -->
                                 <div class="col-12 mt-4">
