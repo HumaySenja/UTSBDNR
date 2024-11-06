@@ -28,7 +28,11 @@
                     </a>
                     <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
-                        {{-- <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span> --}}
+                        @if(isset($cartCount) && $cartCount > 0)
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary">
+                                {{ $cartCount }}
+                            </span>
+                        @endif
                     </a>
                         <a href="#" class="my-auto">
                             <i class="fas fa-user fa-2x"></i>

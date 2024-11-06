@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -11,7 +13,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all(); // Mengambil semua produk dari MongoDB
-        return view('home', ['title' => "Sangkuriang Mart", "products" => $products]);
+        $cartCount = Cart::where('user_id', Auth::id())->count();
+        return view('home', ['title' => "Sangkuriang Mart", "products" => $products, "cartCount"=> $cartCount]);
     }
 
      // Menampilkan satu produk berdasarkan ID
