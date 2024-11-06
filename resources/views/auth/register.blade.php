@@ -62,7 +62,7 @@
                     <button class="btn btn-primary w-100" type="submit">Register</button>
                   </div>
                   <div class="col-12">
-                    <p class="small mb-0">Already have account? <a href="">Log in</a></p>
+                    <p class="small mb-0">Already have account? <a href="{{ route('login') }}">Log in</a></p>
                   </div>
                 </form>
 

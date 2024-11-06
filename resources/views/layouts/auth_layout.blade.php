@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('assets\img\tirta_wibawa_mukti_logo.png')}}" rel="icon">
+  <link href="{{asset('')}}" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -22,12 +22,13 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{{ asset('assets/css/auth.css') }}" rel="stylesheet">
   <style>
     body {
-        background: url("{{asset('assets/img/header.png')}}") no-repeat; /* Hindari pengulangan gambar */
-        background-size: 100% 100%; /* Menyesuaikan gambar dengan ukuran halaman */
-        background-position: center; /* Posisikan gambar di tengah halaman */
+        background: url("{{asset('assets/img/hero-img.jpg')}}") no-repeat;
+        background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     }
   </style>
 </head>
@@ -51,11 +52,6 @@
 
   {{-- <script src="assets/vendor/sweet-alert/sweetalert2@11.js"></script> --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-
-  --}}
-
 
   @if(Session::has('failedlogin'))
   <script>
