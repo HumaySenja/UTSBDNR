@@ -92,7 +92,10 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/');
+            return response()->json([
+                'message' => 'Login successful',
+                'user' => Auth::user()
+            ]);
         }
 
         return response()->json(['error' => 'Invalid credentials'], 401);
@@ -100,6 +103,7 @@ class UserController extends Controller
 
     public function registerView(){
         return view('auth.register', ['title' => "Register"]);
+
     }
 
     public function logout(){

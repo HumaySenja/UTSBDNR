@@ -18,6 +18,14 @@
                         <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4 my-auto me-2">Register</a>
                         <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-pill px-4 my-auto">Login</a>
                     @else
+                    <a href="{{ route('history') }}" class="position-relative me-4 my-auto">
+                        <i class="fa fa-history fa-2x"></i>
+                        {{-- <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span> --}}
+                    </a>
+                    <a href="{{ route('transaction') }}" class="position-relative me-4 my-auto">
+                        <i class="fa fa-receipt fa-2x"></i>
+                        {{-- <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span> --}}
+                    </a>
                     <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
                         {{-- <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span> --}}

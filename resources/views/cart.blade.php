@@ -3,6 +3,7 @@
         <!-- Cart Page Start -->
         <div class="container-fluid py-5">
             <div class="container py-5">
+                <form action="">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -12,7 +13,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,9 +85,12 @@
                             <h5 class="mb-0 ps-4 me-4">Total</h5>
                             <p class="mb-0 pe-4">Rp{{ number_format($total + 3000, 0, ',', '.') }}</p>
                         </div>
-                        <a href="{{ route('checkout') }}"
-                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                            type="button">Proceed Checkout</a>
+                        <form action="/checkout" method="POST">
+                            @csrf
+                            <button
+                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                                type="submit">Proceed Checkout</button>
+                        </form>
                     </div>
                 </div>
             </div>

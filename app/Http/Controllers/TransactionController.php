@@ -19,48 +19,18 @@ class TransactionController extends Controller
         return response()->json($transactions);
     }
 
-    /**
-     * Store a newly created transaction in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'products' => 'required|array',
-            'products.*.product_id' => 'required|string',
-            'products.*.name' => 'required|string',
-            'products.*.quantity' => 'required|integer|min:1',
-            'products.*.price' => 'required|numeric|min:0',
-            'total_price' => 'required|numeric|min:0',
-            'status' => 'required|string|in:Pending,InProgress,Delivered,Cancelled',
-            'shipping_address' => 'required|array',
-            'shipping_address.address_line' => 'required|string',
-            'shipping_address.city' => 'required|string',
-            'shipping_address.postal_code' => 'required|string',
-        ]);
-
-        $data['user_id'] = Auth::id();
-        $transaction = Transaction::create($data);
-
-        return response()->json($transaction, 201);
+    public function transactionsView(){
+        $transactions = Transaction::where('user_id', Auth::id())->where('status', "Pending")->get();
+        $title = "Sangkuriang Mart | Transactions";
+        return view('transactions', compact('transactions', 'title'));
     }
 
-    /**
-     * Display the specified transaction.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Transaction $transaction)
-    {
-        if ($transaction->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-
-        return response()->json($transaction);
+    public function historyView(){
+        $transactions = Transaction::where('user_id', Auth::id())->where('status', "Paid")->get();
+        $title = "Sangkuriang Mart | Transactions History";
+        return view('history', compact('transactions', 'title'));
     }
+    
 
     /**
      * Update the specified transaction in storage.
@@ -95,19 +65,52 @@ class TransactionController extends Controller
     }
 
     /**
+     * Update the status of the specified transaction.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $transactionId
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(Request $request)
+    {
+        // Validate the status input
+        $data = $request->validate([
+            'id' => 'required|string',
+            'status' => 'required|string|in:Pending,Paid',
+        ]);
+
+        // Find the transaction
+        $transaction = Transaction::findOrFail($data['id']);
+
+        // Check if the authenticated user is the owner of the transaction
+        if ($transaction->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        // Update the transaction status
+        $transaction->update(['status' => $data['status']]);
+
+        return redirect('/history');
+    }
+
+
+    /**
      * Remove the specified transaction from storage.
      *
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function removeTransaction($transactionId)
     {
+        $transaction = Transaction::findOrFail($transactionId);
+
+        // Check if the authenticated user is the owner of the transaction
         if ($transaction->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        $transaction->delete();
+        $transaction->delete(); // Menghapus produk dari keranjang
 
-        return response()->json(['message' => 'Transaction deleted']);
+        return redirect()->route('transaction')->with('success', 'Transaksi berhasil dibatalkan.');
     }
 }
