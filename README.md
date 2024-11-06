@@ -29,7 +29,6 @@ Sangkuriang Mart adalah aplikasi marketplace yang menjual buah dan sayur segar, 
 
 - **Database**: Menggunakan MongoDB untuk penyimpanan data yang cepat dan fleksibel. 
 - **Backend**: PHP dengan framework Laravel. 
-- **Frontend**: 
 
 ### Struktur Database
 
