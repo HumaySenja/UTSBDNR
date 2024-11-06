@@ -20,7 +20,7 @@ Route::get('/checkout', function(){
     return view('checkout');
 })->name('checkout');
 
-Route::get('/register', [UserController::class, 'registerView']);
+Route::get('/register', [UserController::class, 'registerView'])->name('register');
 Route::post('/register/process', [UserController::class, 'addUser']);
 Route::get('/login', [UserController::class, 'loginView'])->name('login');
 Route::post('/login/process', [UserController::class, 'login']);

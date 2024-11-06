@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Route;
 
 class UserController extends Controller
 {
@@ -111,10 +112,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return response()->json([
-                'message' => 'Login successful',
-                'user' => Auth::user()
-            ]);
+            return redirect('/');
         }
 
         return response()->json(['error' => 'Invalid credentials'], 401);
