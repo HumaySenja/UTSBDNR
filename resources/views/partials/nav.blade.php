@@ -8,9 +8,9 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="{{ route('home') }}" class="nav-item nav-link {{ ($title == "Sangkuriang Mart") ? "active" : "" }}">Home</a>
+                    {{-- <a href="{{ route('home') }}" class="nav-item nav-link {{ ($title == "Sangkuriang Mart") ? "active" : "" }}">Home</a>
                     <a href="{{ route('shop') }}" class="nav-item nav-link {{ ($title == "Sangkuriang Mart | Shop") ? "active" : "" }}">Shop</a>
-                    <a href="{{ route('shop-detail') }}" class="nav-item nav-link {{ ($title == "Sangkuriang Mart | Shop Detail") ? "active" : "" }}">Shop Detail</a>
+                    <a href="{{ route('shop-detail') }}" class="nav-item nav-link {{ ($title == "Sangkuriang Mart | Shop Detail") ? "active" : "" }}">Shop Detail</a> --}}
                 </div>
                 <div class="d-flex m-3 me-0">
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
@@ -34,9 +34,9 @@
                             </span>
                         @endif
                     </a>
-                        <a href="#" class="my-auto">
+                        {{-- <a href="#" class="my-auto">
                             <i class="fas fa-user fa-2x"></i>
-                        </a>
+                        </a> --}}
                         <a href="{{ route('logout') }}" class="btn btn-outline-primary rounded-pill px-4 my-auto ms-2">Logout</a>
                     @endguest
                 </div>
