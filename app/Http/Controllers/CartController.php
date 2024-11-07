@@ -47,7 +47,7 @@ class CartController extends Controller
         });
 
         $title = "Cart";
-        return view('cart', compact('cartItems', 'total', 'title'));
+        return view('cart', compact('cartItems', 'total', 'title', 'user'));
     }
 
     // Menghapus produk dari keranjang

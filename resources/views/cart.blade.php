@@ -1,12 +1,12 @@
-@extends("layouts.main")
+@extends('layouts.main')
 @section('content')
-        <!-- Cart Page Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                          <tr>
+    <!-- Cart Page Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
                             <th scope="col">Products</th>
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
@@ -43,8 +43,8 @@
                                     <p class="mb-0 mt-4 total-price">
                                         Rp{{ number_format($cartItem->product->price * $cartItem->quantity, 0, ',', '.') }}
                                     </p>
-                                </td>                                
-                                
+                                </td>
+
                                 <td>
                                     <form action="{{ route('cart.remove', ['cartId' => $cartItem->id]) }}" method="POST">
                                         @csrf
@@ -74,10 +74,16 @@
                             <div class="d-flex justify-content-between">
                                 <h5 class="mb-0 me-4">Shipping</h5>
                                 <div>
-                                    <p class="mb-0">Flat rate: Rp3,000</p>
+                                    <p class="mb-0">Flat rate: Rp15,000</p>
                                 </div>
                             </div>
-                            <p class="mb-0 text-end">Shipping to Indonesia</p>
+                            @if (!empty($user->address) && isset($user->address[0]['address_line'], $user->address[0]['city']))
+                                <p class="mb-0 text-end">
+                                    Shipping to: {{ $user->address[0]['address_line'] }}, {{ $user->address[0]['city'] }}
+                                </p>
+                            @else
+                                <p class="mb-0 text-end">Shipping address not available</p>
+                            @endif
                         </div>
 
                         <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
@@ -97,5 +103,3 @@
     </div>
     <!-- Cart Page End -->
 @endsection
-
-
