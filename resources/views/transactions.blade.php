@@ -3,7 +3,6 @@
     <!-- Transaction Page Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <form action="">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -63,7 +62,6 @@
                         </tbody>
                     </table>
                 </div>
-            </form>
         </div>
     </div>
     <!-- Transaction Page End -->
