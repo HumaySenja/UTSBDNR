@@ -26,10 +26,15 @@ class TransactionController extends Controller
     }
 
     public function historyView(){
-        $transactions = Transaction::where('user_id', Auth::id())->where('status', "Paid")->get();
+        $transactions = Transaction::where('user_id', Auth::id())
+                                    ->where('status', "Paid")
+                                    ->orderBy('created_at', 'desc')  // Sort by created_at in descending order
+                                    ->limit(10)                     // Set a limit (adjust the number as needed)
+                                    ->get();
         $title = "Sangkuriang Mart | Transactions History";
         return view('history', compact('transactions', 'title'));
     }
+    
     
 
     /**
