@@ -19,21 +19,21 @@
                             @foreach ($transactions as $r)
                                 <tr>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->created_at }}</p>
+                                        <p class="mb-2 mt-2">{{ $r->created_at }}</p>
                                     </td>
                                     <td>
                                         @foreach ($r->products as $p)
-                                            <p class="mb-0">{{ $p["name"] }}</p>
+                                            <p class="mb-2 mt-2">{{ $p["name"] }}</p>
                                         @endforeach
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->shipping_address["address_line"] }}</p>
+                                        <p class="mb-2 mt-2">{{ $r->shipping_address["address_line"] }}</p>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">Rp{{ number_format($r->total_price, 0, ',', '.') }}</p>
+                                        <p class="mb-2 mt-2">Rp{{ number_format($r->total_price, 0, ',', '.') }}</p>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->status }}</p>
+                                        <p class="mb-2 mt-2">{{ $r->status }}</p>
                                     </td>
                                 </tr>
                             @endforeach

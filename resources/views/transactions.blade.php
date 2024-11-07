@@ -20,21 +20,21 @@
                             @foreach ($transactions as $r)
                                 <tr>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->created_at }}</p>
+                                        <p class="mb-2 mt-3">{{ $r->created_at }}</p>
                                     </td>
                                     <td>
                                         @foreach ($r->products as $p)
-                                            <p class="mb-0">{{ $p["name"] }}</p>
+                                            <p class="mb-2 mt-3">{{ $p["name"] }}</p>
                                         @endforeach
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->shipping_address["address_line"] }}</p>
+                                        <p class="mb-2 mt-3">{{ $r->shipping_address["address_line"] }}</p>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">Rp{{ number_format($r->total_price, 0, ',', '.') }}</p>
+                                        <p class="mb-2 mt-3">Rp{{ number_format($r->total_price, 0, ',', '.') }}</p>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $r->status }}</p>
+                                        <p class="mb-2 mt-3">{{ $r->status }}</p>
                                     </td>
                                     <td>
                                         @if ($r->status !== 'Paid')
@@ -42,7 +42,7 @@
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$r->id}}">
                                                 <input type="hidden" name="status" value="Paid">
-                                                <button class="btn btn-md rounded-circle bg-light border mt-4">
+                                                <button class="btn btn-md rounded-circle bg-light border mt-2">
                                                     <i class="fa fa-check text-success"></i>
                                                 </button>
                                             </form>
@@ -52,7 +52,7 @@
                                         <form action="{{ route('transaction.remove', ['transactionId' => $r->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-md rounded-circle bg-light border mt-4">
+                                            <button class="btn btn-md rounded-circle bg-light border mt-2">
                                                 <i class="fa fa-times text-danger"></i>
                                             </button>
                                         </form>
